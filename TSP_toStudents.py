@@ -80,8 +80,10 @@ class BasicTSP:
     def uniformCrossover(self, indA, indB):
         """
         Your Uniform Crossover Implementation
+
+        Week 4 slide 37
         """
-        pass
+
 
     def cycleCrossover(self, indA, indB):
         """
