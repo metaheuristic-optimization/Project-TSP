@@ -162,6 +162,10 @@ class BasicTSP:
             2. Apply Crossover
             3. Apply Mutation
             """
+            [ind1, ind2] = self.randomSelection()
+            child = self.crossover(ind1, ind2)
+            self.population[i].setGene(child)
+            self.mutation(self.population[i])
 
     def GAStep(self):
         """
