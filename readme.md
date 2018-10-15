@@ -9,3 +9,7 @@ python TSP_toStudents.py <filename>
 ```
 python TSP_toStudents.py ./dataset/inst-0.tsp
 ```
+
+```
+python3 TSP_toStudents.py ./dataset/inst-0.tsp
+```

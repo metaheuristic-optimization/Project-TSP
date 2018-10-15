@@ -80,6 +80,10 @@ class BasicTSP:
     def uniformCrossover(self, indA, indB):
         """
         Your Uniform Crossover Implementation
+
+        Uniform Order-based Crossover
+
+        Week 5 17:41
         """
         pass
 
@@ -91,12 +95,27 @@ class BasicTSP:
     def reciprocalExchangeMutation(self, ind):
         """
         Your Reciprocal Exchange Mutation implementation
+
+        Week 5 - 11:20
         """
-        pass
+        if not self.doMutation():
+            return
+
+        indexA = random.randint(0, self.genSize-1)
+        indexB = random.randint(0, self.genSize-1)
+
+        tmp = ind.genes[indexA]
+        ind.genes[indexA] = ind.genes[indexB]
+        ind.genes[indexB] = tmp
+
+        ind.computeFitness()
+        self.updateBest(ind)
 
     def scrambleMutation(self, ind):
         """
         Your Scramble Mutation implementation
+
+        Week 5 - 11:30
         """
         pass
 
@@ -128,8 +147,9 @@ class BasicTSP:
         """
         Mutate an individual by swaping two cities with certain probability (i.e., mutation rate)
         """
-        if random.random() > self.mutationRate:
+        if not self.doMutation():
             return
+
         indexA = random.randint(0, self.genSize-1)
         indexB = random.randint(0, self.genSize-1)
 
@@ -139,6 +159,14 @@ class BasicTSP:
 
         ind.computeFitness()
         self.updateBest(ind)
+
+    def doMutation(self):
+        """
+        Helper function to decide if a mutation will take place based on the mutation rate
+
+        :return:  Boolean
+        """
+        return random.random() > self.mutationRate
 
     def updateMatingPool(self):
         """
@@ -165,7 +193,7 @@ class BasicTSP:
             [ind1, ind2] = self.randomSelection()
             child = self.crossover(ind1, ind2)
             self.population[i].setGene(child)
-            self.mutation(self.population[i])
+            self.reciprocalExchangeMutation(self.population[i])
 
     def GAStep(self):
         """
