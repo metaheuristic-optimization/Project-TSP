@@ -5,6 +5,8 @@
 /.idea/dataSources/
 dataSources.local.xml
 
+*.pyc
+
 # Editor-based HTTP Client requests
 /.idea/httpRequests/
 rest-client.private.env.json
