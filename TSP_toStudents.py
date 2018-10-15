@@ -117,7 +117,22 @@ class BasicTSP:
 
         Week 5 - 11:30
         """
+        if not self.doMutation():
+            return
+
+        indexStart = random.randint(0, self.genSize-2)
+        indexEnd = random.randint(indexStart, self.genSize-1)
+
+        tmp = ind.genes[indexStart:indexEnd]
+
+        random.shuffle(tmp)
+        ind.genes[indexStart:indexEnd] = tmp
+
+        ind.computeFitness()
+        self.updateBest(ind)
+
         pass
+
 
     def crossover(self, indA, indB):
         """
@@ -193,7 +208,7 @@ class BasicTSP:
             [ind1, ind2] = self.randomSelection()
             child = self.crossover(ind1, ind2)
             self.population[i].setGene(child)
-            self.reciprocalExchangeMutation(self.population[i])
+            self.scrambleMutation(self.population[i])
 
     def GAStep(self):
         """
