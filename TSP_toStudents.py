@@ -121,7 +121,7 @@ class BasicTSP:
             return
 
         indexStart = random.randint(0, self.genSize-2)
-        indexEnd = random.randint(indexStart, self.genSize-1)
+        indexEnd = random.randint(indexStart + 1, self.genSize-1)
 
         tmp = ind.genes[indexStart:indexEnd]
 
