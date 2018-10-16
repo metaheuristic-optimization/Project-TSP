@@ -85,6 +85,20 @@ class BasicTSP:
 
         Week 5 17:41
         """
+        totalIndexes = random.randint(0, self.genSize-1)
+        selectedIndexes = random.sample(list(enumerate(indA.genes)), totalIndexes)
+
+        tmpChildA = {}
+        tmpChildB = {}
+
+        for i, _ in selectedIndexes:
+            tmpChildA[i] = {"selected": True,  "value": indA.genes[i]}
+            tmpChildB[i] = {"selected": True,  "value": indB.genes[i]}
+
+        # for i in range(0, self.genSize-1):
+
+
+        print(tmpChildA)
         pass
 
     def cycleCrossover(self, indA, indB):
@@ -206,7 +220,7 @@ class BasicTSP:
             3. Apply Mutation
             """
             [ind1, ind2] = self.randomSelection()
-            child = self.crossover(ind1, ind2)
+            child = self.uniformCrossover(ind1, ind2)
             self.population[i].setGene(child)
             self.scrambleMutation(self.population[i])
 
