@@ -92,13 +92,22 @@ class BasicTSP:
         tmpChildB = {}
 
         for i, _ in selectedIndexes:
-            tmpChildA[i] = {"selected": True,  "value": indA.genes[i]}
-            tmpChildB[i] = {"selected": True,  "value": indB.genes[i]}
-
-        # for i in range(0, self.genSize-1):
-
+            tmpChildA[indA.genes[i]] = i
+            tmpChildB[indA.genes[i]] = i
 
         print(tmpChildA)
+
+        for i in range(0, self.genSize):
+            if not indB.genes[i] in tmpChildA:
+                tmpChildA[indB.genes[i]] = i
+            if not indA.genes[i] in tmpChildB:
+                tmpChildA[indA.genes[i]] = i
+
+        print('==========================================')
+        print(tmpChildA)
+
+        for
+
         pass
 
     def cycleCrossover(self, indA, indB):
