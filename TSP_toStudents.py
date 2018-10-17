@@ -89,8 +89,10 @@ class BasicTSP:
         child = []
 
         for i in range(0, self.genSize):
-            choice = random.choice([True, False])
-            child += [indA.genes[i] if choice else None]
+            if random.choice([True, False]):
+                child += [indA.genes[i]]
+            else:
+                child += [None]
 
         for i in range(0, self.genSize):
             if not indB.genes[i] in child:
