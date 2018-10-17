@@ -9,6 +9,7 @@ import random
 from Individual import *
 import sys
 import math
+import itertools
 
 class BasicTSP:
     def __init__(self, _fName, _popSize, _mutationRate, _maxIterations):
@@ -85,47 +86,18 @@ class BasicTSP:
 
         Week 5 17:41
         """
-        childA = []
-        childB = []
-
-        for i in range(0, self.genSize-1):
-            choice = random.choice([True, False])
-            childA += [indA.genes[i] if choice else None]
-            childB += [indB.genes[i] if choice else None]
-
-
-        print(childA)
-        print(childB)
-
-
-        """
-        totalIndexes = random.randint(0, self.genSize-1)
-        selectedIndexes = random.sample(list(enumerate(indA.genes)), 1)
-
-        tmpChildA = {}
-        tmpChildB = {}
-
-        for i, _ in selectedIndexes:
-            tmpChildA[indA.genes[i]] = i
-            tmpChildB[indA.genes[i]] = i
-
-        print(tmpChildA)
+        child = []
 
         for i in range(0, self.genSize):
-            if not indB.genes[i] in tmpChildA:
-                tmpChildA[indB.genes[i]] = i
-            if not indA.genes[i] in tmpChildB:
-                tmpChildA[indA.genes[i]] = i
+            choice = random.choice([True, False])
+            child += [indA.genes[i] if choice else None]
 
-        print('==========================================')
-        print(tmpChildA)
+        for i in range(0, self.genSize):
+            if not indB.genes[i] in child:
+                nextFreeSlot = next(i for i,v in enumerate(child) if v == None)
+                child[nextFreeSlot] = indB.genes[i]
 
-        print('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@')
-        print(indA.genes)
-        print('++++++++++++++++++++++++++++++++++++++++++')
-        print([tmpChildA.get(i) for i in range(1, max(tmpChildA) + 1)])
-        """
-        pass
+        return child
 
     def cycleCrossover(self, indA, indB):
         """
