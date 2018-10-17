@@ -85,8 +85,22 @@ class BasicTSP:
 
         Week 5 17:41
         """
+        childA = []
+        childB = []
+
+        for i in range(0, self.genSize-1):
+            choice = random.choice([True, False])
+            childA += [indA.genes[i] if choice else None]
+            childB += [indB.genes[i] if choice else None]
+
+
+        print(childA)
+        print(childB)
+
+
+        """
         totalIndexes = random.randint(0, self.genSize-1)
-        selectedIndexes = random.sample(list(enumerate(indA.genes)), totalIndexes)
+        selectedIndexes = random.sample(list(enumerate(indA.genes)), 1)
 
         tmpChildA = {}
         tmpChildB = {}
@@ -106,8 +120,11 @@ class BasicTSP:
         print('==========================================')
         print(tmpChildA)
 
-        for
-
+        print('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@')
+        print(indA.genes)
+        print('++++++++++++++++++++++++++++++++++++++++++')
+        print([tmpChildA.get(i) for i in range(1, max(tmpChildA) + 1)])
+        """
         pass
 
     def cycleCrossover(self, indA, indB):
