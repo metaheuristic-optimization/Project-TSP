@@ -19,6 +19,7 @@ class Individual:
         self.genes      = []
         self.genSize    = _size
         self.data       = _data
+        self.selectionProbability = 0
 
         self.genes = list(self.data.keys())
 
@@ -36,6 +37,9 @@ class Individual:
         self.genes = []
         for gene_i in genes:
             self.genes.append(gene_i)
+
+    def setSelectionProbability(self, selectionProbability):
+        self.selectionProbability = selectionProbability
 
     def copy(self):
         """

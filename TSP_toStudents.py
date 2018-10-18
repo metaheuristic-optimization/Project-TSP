@@ -10,6 +10,7 @@ from Individual import *
 import sys
 import math
 import itertools
+import functools
 
 class BasicTSP:
     def __init__(self, _fName, _popSize, _mutationRate, _maxIterations):
@@ -76,6 +77,23 @@ class BasicTSP:
         """
         Your Roulette Wheel Selection Implementation
         """
+        #fitnessSum = functools.reduce(lambda a, b : a.fitness + b.fitness, self.matingPool)
+
+        #print(fitnessSum)
+
+        totalFitness = 0
+
+        print("First: ", self.matingPool[0].fitness)
+
+        for i in range(0, len(self.matingPool)):
+            totalFitness += self.matingPool[i].fitness
+
+        for i in range(0, len(self.matingPool)):
+            selectionProbability = self.matingPool[i].fitness / totalFitness
+            self.matingPool[i].setSelectionProbability(selectionProbability)
+
+        print(totalFitness)
+
         pass
 
     def uniformCrossover(self, indA, indB):
@@ -146,7 +164,6 @@ class BasicTSP:
         self.updateBest(ind)
 
         pass
-
 
     def crossover(self, indA, indB):
         """
@@ -219,10 +236,10 @@ class BasicTSP:
             2. Apply Crossover
             3. Apply Mutation
             """
-            [ind1, ind2] = self.randomSelection()
+            [ind1, ind2] = self.rouletteWheel()
             child = self.uniformCrossover(ind1, ind2)
             self.population[i].setGene(child)
-            self.scrambleMutation(self.population[i])
+            self.reciprocalExchangeMutation(self.population[i])
 
     def GAStep(self):
         """
