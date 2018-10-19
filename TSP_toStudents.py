@@ -81,7 +81,7 @@ class BasicTSP:
         wheel = {}
 
         for i in range(0, len(self.matingPool)):
-            probability = 1 / self.matingPool[i].fitness
+            probability = 1 / float(self.matingPool[i].fitness)
             self.matingPool[i].setSelectionProbability(probability)
             totalProbability += probability
 
@@ -95,7 +95,7 @@ class BasicTSP:
             total = end
 
         """
-        Spin the wheel to get candidates
+        Spin the wheel to get best candidates
         """
         spinResultA = random.uniform(0, total)
         spinResultB = random.uniform(0, total)
