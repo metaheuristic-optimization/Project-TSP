@@ -77,24 +77,36 @@ class BasicTSP:
         """
         Your Roulette Wheel Selection Implementation
         """
-        #fitnessSum = functools.reduce(lambda a, b : a.fitness + b.fitness, self.matingPool)
-
-        #print(fitnessSum)
-
-        totalFitness = 0
-
-        print("First: ", self.matingPool[0].fitness)
+        totalProbability = 0
+        wheel = {}
 
         for i in range(0, len(self.matingPool)):
-            totalFitness += self.matingPool[i].fitness
+            probability = 1 / self.matingPool[i].fitness
+            self.matingPool[i].setSelectionProbability(probability)
+            totalProbability += probability
 
+        """
+        Compute the wheel
+        """
+        total = 0
         for i in range(0, len(self.matingPool)):
-            selectionProbability = self.matingPool[i].fitness / totalFitness
-            self.matingPool[i].setSelectionProbability(selectionProbability)
+            end = self.matingPool[i].selectionProbability + total
+            wheel[i] = {"index": i, "start": total, "end": end}
+            total = end
 
-        print(totalFitness)
+        """
+        Spin the wheel to get candidates
+        """
+        spinResultA = random.uniform(0, total)
+        spinResultB = random.uniform(0, total)
 
-        pass
+        for i in wheel:
+            if spinResultA >= wheel[i]["start"] and spinResultA < wheel[i]["end"]:
+                indA = self.matingPool[wheel[i]["index"]]
+            if spinResultB >= wheel[i]["start"] and spinResultB < wheel[i]["end"]:
+                indB = self.matingPool[wheel[i]["index"]]
+
+        return [indA, indB]
 
     def uniformCrossover(self, indA, indB):
         """
@@ -272,5 +284,5 @@ if len(sys.argv) < 2:
 
 problem_file = sys.argv[1]
 
-ga = BasicTSP(sys.argv[1], 300, 0.1, 500)
+ga = BasicTSP(sys.argv[1], 300, 0.1, 300)
 ga.search()
