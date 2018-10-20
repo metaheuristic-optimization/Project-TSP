@@ -170,14 +170,19 @@ class BasicTSP:
         print(cycles)
 
         # Alternate cycles to generate the children
-        """
         counter = 0
         for cycle in cycles:
-            for i in cycle:
-                
-                # if counter % 2 == 0:
-                 #   child1
-        """
+            for pair in cycle:
+                if counter % 2 == 0:
+                    child1[pair['index']] = pair['parent1']
+                    child2[pair['index']] = pair['parent2']
+                else:
+                    child1[pair['index']] = pair['parent2']
+                    child2[pair['index']] = pair['parent1']
+            counter += 1
+
+        print(child1)
+        print(child2)
 
         pass
 
