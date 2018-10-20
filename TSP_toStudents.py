@@ -135,7 +135,31 @@ class BasicTSP:
         """
         Your Cycle Crossover Implementation
         """
+        child1 = [None] * self.genSize
+        child2 = [None] * self.genSize
+        cycleTerminator = indA.genes[0]
+        cycles = []
+        cycleStart = 0
+        dictIndA = {}
+        dictIndB = {}
+        tmpCounter = 0
+
+        print(indA.genes)
+        print(indB.genes)
+
+        # Build dictionary for fast lookup of indexes
+        for i in range(0, self.genSize):
+            dictIndA[indA.genes[i]] = i
+            dictIndB[indB.genes[i]] = i
+
+        # Identify cycles
+        cycleComplete = False
+        for i in range(0, self.genSize):
+            tmpCycle = []
+            dictIndA
+
         pass
+
     def reciprocalExchangeMutation(self, ind):
         """
         Your Reciprocal Exchange Mutation implementation
@@ -249,7 +273,7 @@ class BasicTSP:
             3. Apply Mutation
             """
             [ind1, ind2] = self.rouletteWheel()
-            child = self.uniformCrossover(ind1, ind2)
+            child = self.cycleCrossover(ind1, ind2)
             self.population[i].setGene(child)
             self.reciprocalExchangeMutation(self.population[i])
 
