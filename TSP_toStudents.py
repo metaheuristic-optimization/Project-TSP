@@ -135,28 +135,49 @@ class BasicTSP:
         """
         Your Cycle Crossover Implementation
         """
+        flags = [False] * self.genSize
         child1 = [None] * self.genSize
         child2 = [None] * self.genSize
-        cycleTerminator = indA.genes[0]
         cycles = []
-        cycleStart = 0
-        dictIndA = {}
-        dictIndB = {}
-        tmpCounter = 0
+        dictMap = {}
 
         print(indA.genes)
         print(indB.genes)
 
         # Build dictionary for fast lookup of indexes
         for i in range(0, self.genSize):
-            dictIndA[indA.genes[i]] = i
-            dictIndB[indB.genes[i]] = i
+            dictMap[indA.genes[i]] = {'parent1': indA.genes[i], 'parent2': indB.genes[i], 'index': i}
 
-        # Identify cycles
-        cycleComplete = False
+        # Compute all the cycles
         for i in range(0, self.genSize):
             tmpCycle = []
-            dictIndA
+
+            # Make sure value is not already in another cycle
+            if not flags[i]:
+                cycleStart = indA.genes[i]
+                tempPair = dictMap[indA.genes[i]]
+                tmpCycle.append(tempPair)
+                flags[tempPair['index']] = True
+
+                while not tempPair['parent2'] == cycleStart:
+                    tempPair = dictMap[tempPair['parent2']]
+                    flags[tempPair['index']] = True
+                    tmpCycle.append(tempPair)
+
+                cycles.append(tmpCycle)
+
+
+        print(cycles)
+
+        # Alternate cycles to generate the children
+        """
+        counter = 0
+        for cycle in cycles:
+            for i in cycle:
+                
+                # if counter % 2 == 0:
+                 #   child1
+        """
 
         pass
 
