@@ -141,9 +141,6 @@ class BasicTSP:
         cycles = []
         dictMap = {}
 
-        print(indA.genes)
-        print(indB.genes)
-
         # Build dictionary for fast lookup of indexes
         for i in range(0, self.genSize):
             dictMap[indA.genes[i]] = {'parent1': indA.genes[i], 'parent2': indB.genes[i], 'index': i}
@@ -166,9 +163,6 @@ class BasicTSP:
 
                 cycles.append(tmpCycle)
 
-
-        print(cycles)
-
         # Alternate cycles to generate the children
         counter = 0
         for cycle in cycles:
@@ -181,10 +175,7 @@ class BasicTSP:
                     child2[pair['index']] = pair['parent1']
             counter += 1
 
-        print(child1)
-        print(child2)
-
-        pass
+        return child1
 
     def reciprocalExchangeMutation(self, ind):
         """
