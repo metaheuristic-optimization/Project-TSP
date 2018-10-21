@@ -33,7 +33,7 @@ class BasicTSP:
         self.selectedCandidateSelectionMethod = int(_selectedCandidateSelectionMethod)
         self.crossoverSelectionMethods = [self.uniformCrossover, self.uniformCrossover, self.crossover]
         self.selectedCrossoverMethod = int(_selectedCrossoverMethod)
-        self.mutationMethods = [self.mutation, self.scrambleMutation]
+        self.mutationMethods = [self.scrambleMutation, self.reciprocalExchangeMutation]
         self.selectedMutationMethod = int(_selectedMutationMethod)
 
         self.readInstance()
@@ -327,7 +327,7 @@ problem_file = sys.argv[1]
 
 selectedCandidateSelectionMethod = input("Please select candidate selection method \n1) Random selection \n2) Roulette Wheel \n")
 selectedCrossoverMethod = input("Please select crossover method \n1) Uniform crossover\n2) Cycle crossover \n3) 1 order crossover \n")
-selectedMutationMethod = input("Please select mutation method \n1) Mutation \n2) Cycle crossover \n")
+selectedMutationMethod = input("Please select mutation method \n1) Scramble mutation \n2) Reciprocal exchange mutation \n")
 
 ga = BasicTSP(sys.argv[1], 300, 0.1, 300, selectedCandidateSelectionMethod, selectedCrossoverMethod, selectedMutationMethod)
 
