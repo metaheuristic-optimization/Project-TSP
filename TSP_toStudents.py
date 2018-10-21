@@ -1,23 +1,22 @@
 
 
 """
-Author:
-file:
+Author: David Ahern - R00002267
 """
 
 import random
 from Individual import *
 import sys
+import time
 import math
 import itertools
 import functools
 
 class BasicTSP:
-    def __init__(self, _fName, _popSize, _mutationRate, _maxIterations):
+    def __init__(self, _fName, _popSize, _mutationRate, _maxIterations, _selectedCandidateSelectionMethod, _selectedCrossoverMethod, _selectedMutationMethod):
         """
         Parameters and general variables
         """
-
         self.population     = []
         self.matingPool     = []
         self.best           = None
@@ -28,6 +27,14 @@ class BasicTSP:
         self.iteration      = 0
         self.fName          = _fName
         self.data           = {}
+
+        # User input variables
+        self.candidateSelectionMethods = [self.randomSelection, self.rouletteWheel]
+        self.selectedCandidateSelectionMethod = int(_selectedCandidateSelectionMethod)
+        self.crossoverSelectionMethods = [self.uniformCrossover, self.uniformCrossover, self.crossover]
+        self.selectedCrossoverMethod = int(_selectedCrossoverMethod)
+        self.mutationMethods = [self.mutation, self.scrambleMutation]
+        self.selectedMutationMethod = int(_selectedMutationMethod)
 
         self.readInstance()
         self.initPopulation()
@@ -75,7 +82,7 @@ class BasicTSP:
 
     def rouletteWheel(self):
         """
-        Your Roulette Wheel Selection Implementation
+        Roulette Wheel Selection Implementation
         """
         totalProbability = 0
         wheel = {}
@@ -86,7 +93,8 @@ class BasicTSP:
             totalProbability += probability
 
         """
-        Compute the wheel
+        Compute the wheel with both start and end points. 
+        Points with the largest distance between their stand and end points have a better chance of being selected
         """
         total = 0
         for i in range(0, len(self.matingPool)):
@@ -95,7 +103,8 @@ class BasicTSP:
             total = end
 
         """
-        Spin the wheel to get best candidates
+        Spin the wheel to get the best candidate
+        Generate 2 random points and compute the position they lay on the wheel
         """
         spinResultA = random.uniform(0, total)
         spinResultB = random.uniform(0, total)
@@ -110,11 +119,7 @@ class BasicTSP:
 
     def uniformCrossover(self, indA, indB):
         """
-        Your Uniform Crossover Implementation
-
-        Uniform Order-based Crossover
-
-        Week 5 17:41
+        Uniform Crossover Implementation
         """
         child = []
 
@@ -289,10 +294,10 @@ class BasicTSP:
             2. Apply Crossover
             3. Apply Mutation
             """
-            [ind1, ind2] = self.rouletteWheel()
-            child = self.cycleCrossover(ind1, ind2)
+            [ind1, ind2] = self.candidateSelectionMethods[self.selectedCandidateSelectionMethod - 1]()
+            child = self.crossoverSelectionMethods[self.selectedCrossoverMethod - 1](ind1, ind2)
             self.population[i].setGene(child)
-            self.reciprocalExchangeMutation(self.population[i])
+            self.mutationMethods[self.selectedMutationMethod - 1](self.population[i])
 
     def GAStep(self):
         """
@@ -322,8 +327,16 @@ if len(sys.argv) < 2:
     print ("Expecting python BasicTSP.py [instance] ")
     sys.exit(0)
 
-
 problem_file = sys.argv[1]
 
-ga = BasicTSP(sys.argv[1], 300, 0.1, 300)
+selectedCandidateSelectionMethod = input("Please select candidate selection method \n1) Random selection \n2) Roulette Wheel \n")
+selectedCrossoverMethod = input("Please select crossover method \n1) Uniform crossover\n2) Cycle crossover \n3) 1 order crossover \n")
+selectedMutationMethod = input("Please select mutation method \n1) Mutation \n2) Cycle crossover \n")
+
+ga = BasicTSP(sys.argv[1], 300, 0.1, 300, selectedCandidateSelectionMethod, selectedCrossoverMethod, selectedMutationMethod)
+
+start_time = time.time()
+
 ga.search()
+
+print("Process took %s seconds" % int(time.time() - start_time))
