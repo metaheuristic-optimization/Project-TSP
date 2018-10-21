@@ -138,7 +138,7 @@ class BasicTSP:
 
     def cycleCrossover(self, indA, indB):
         """
-        Your Cycle Crossover Implementation
+        Cycle Crossover Implementation
         """
         flags = [False] * self.genSize
         child1 = [None] * self.genSize
@@ -184,9 +184,7 @@ class BasicTSP:
 
     def reciprocalExchangeMutation(self, ind):
         """
-        Your Reciprocal Exchange Mutation implementation
-
-        Week 5 - 11:20
+        Reciprocal Exchange Mutation implementation
         """
         if not self.doMutation():
             return
@@ -203,9 +201,7 @@ class BasicTSP:
 
     def scrambleMutation(self, ind):
         """
-        Your Scramble Mutation implementation
-
-        Week 5 - 11:30
+        Scramble Mutation implementation
         """
         if not self.doMutation():
             return
