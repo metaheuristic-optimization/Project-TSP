@@ -29,7 +29,7 @@ class BasicTSP:
         self.data           = {}
 
         # User input variables
-        self.candidateSelectionMethods = [self.randomSelection, self.rouletteWheel]
+        self.candidateSelectionMethods = [self.randomSelection, self.rouletteWheel, self.rankBasedSelection]
         self.selectedCandidateSelectionMethod = int(_selectedCandidateSelectionMethod)
         self.crossoverSelectionMethods = [self.uniformCrossover, self.uniformCrossover, self.crossover]
         self.selectedCrossoverMethod = int(_selectedCrossoverMethod)
@@ -116,6 +116,35 @@ class BasicTSP:
                 indB = self.matingPool[wheel[i]["index"]]
 
         return [indA, indB]
+
+    def rankBasedSelection(self):
+        tmpPool = self.matingPool.copy()
+        sortedPool = self.quickSort(tmpPool)
+
+        return sortedPool[0], sortedPool[1]
+
+    def quickSort(self, list):
+        """
+        Uses quick sort recursive algorithm to sort the list based on fitness
+        """
+        if len(list) == 0:
+            return list
+
+        left = []
+        right = []
+        equal = []
+        pivot = list[0].fitness
+
+        for ind in list:
+            if ind.fitness > pivot:
+                left.append(ind)
+            elif ind.fitness == pivot:
+                equal.append(ind)
+            else:
+                right.append(ind)
+
+        return self.quickSort(left) + equal + self.quickSort(right)
+
 
     def uniformCrossover(self, indA, indB):
         """
@@ -325,7 +354,7 @@ if len(sys.argv) < 2:
 
 problem_file = sys.argv[1]
 
-selectedCandidateSelectionMethod = input("Please select candidate selection method \n1) Random selection \n2) Roulette Wheel \n")
+selectedCandidateSelectionMethod = input("Please select candidate selection method \n1) Random selection \n2) Roulette Wheel \n3) Rank based\n")
 selectedCrossoverMethod = input("Please select crossover method \n1) Uniform crossover\n2) Cycle crossover \n3) 1 order crossover \n")
 selectedMutationMethod = input("Please select mutation method \n1) Scramble mutation \n2) Reciprocal exchange mutation \n")
 
