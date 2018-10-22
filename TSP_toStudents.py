@@ -356,7 +356,7 @@ selectedMutationMethod = input("Please select mutation method \n1) Scramble muta
 
 start_time = time.time()
 
-ga = BasicTSP(sys.argv[1], 300, 0.9, 300, selectedCandidateSelectionMethod, selectedCrossoverMethod, selectedMutationMethod)
+ga = BasicTSP(sys.argv[1], 300, 0.1, 300, selectedCandidateSelectionMethod, selectedCrossoverMethod, selectedMutationMethod)
 
 ga.search()
 
