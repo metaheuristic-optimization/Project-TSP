@@ -25,9 +25,9 @@ class BasicTSP:
         self.data           = {}
 
         # User input variables
-        self.candidateSelectionMethods = [self.randomSelection, self.rouletteWheel, self.rankBasedSelection]
+        self.candidateSelectionMethods = [self.randomSelection, self.rouletteWheel, self.bestAndSecondBest]
         self.selectedCandidateSelectionMethod = int(_selectedCandidateSelectionMethod)
-        self.crossoverSelectionMethods = [self.uniformCrossover, self.uniformCrossover, self.crossover]
+        self.crossoverSelectionMethods = [self.uniformCrossover, self.cycleCrossover, self.crossover]
         self.selectedCrossoverMethod = int(_selectedCrossoverMethod)
         self.mutationMethods = [self.scrambleMutation, self.reciprocalExchangeMutation]
         self.selectedMutationMethod = int(_selectedMutationMethod)
@@ -113,7 +113,7 @@ class BasicTSP:
 
         return [indA, indB]
 
-    def rankBasedSelection(self):
+    def bestAndSecondBest(self):
         tmpPool = self.matingPool.copy()
         sortedPool = self.quickSort(tmpPool)
 
