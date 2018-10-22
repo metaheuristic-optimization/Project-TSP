@@ -1,0 +1,181 @@
+-------------------------1-------------------------------
+Best initial sol:  109919499.62816718
+iteration:  0 best:  107975637.20089848
+iteration:  2 best:  106079326.53670111
+iteration:  12 best:  102424027.70206241
+iteration:  168 best:  100697007.46419802
+Total iterations:  300
+Best Solution:  100697007.46419802
+Process took 259 seconds
+
+Best initial sol:  110257692.6417864
+iteration:  0 best:  108720107.6394502
+iteration:  4 best:  108352708.788598
+iteration:  5 best:  105941520.11410008
+iteration:  16 best:  105594104.64743644
+iteration:  25 best:  102966548.89956452
+iteration:  52 best:  102851882.39162964
+iteration:  126 best:  102411807.84760667
+iteration:  241 best:  100279340.71939234
+Total iterations:  300
+Best Solution:  100279340.71939234
+Process took 257 seconds
+
+Best initial sol:  108025969.29432556
+iteration:  1 best:  106427455.66884692
+iteration:  26 best:  104863044.76451057
+iteration:  35 best:  104695308.40025158
+iteration:  123 best:  104214740.0507478
+iteration:  296 best:  104016437.51232207
+Total iterations:  300
+Best Solution:  104016437.51232207
+Process took 259 seconds
+
+-------------------------2-------------------------------
+Best initial sol:  107656218.58731468
+iteration:  2 best:  107269300.50281133
+iteration:  10 best:  107139850.85197924
+iteration:  14 best:  106620740.46595502
+iteration:  15 best:  105872186.0971397
+iteration:  34 best:  104062777.5788597
+iteration:  52 best:  103279536.38312271
+iteration:  161 best:  102505007.71391815
+iteration:  277 best:  102011641.96779454
+Total iterations:  300
+Best Solution:  102011641.96779454
+Process took 260 seconds
+
+Best initial sol:  105529221.92477596
+iteration:  11 best:  104793484.41775678
+iteration:  79 best:  104284333.05330186
+iteration:  194 best:  102697661.8562522
+Total iterations:  300
+Best Solution:  102697661.8562522
+Process took 261 seconds
+
+Best initial sol:  111616942.84410791
+iteration:  0 best:  110296198.27657521
+iteration:  0 best:  110114068.03616884
+iteration:  1 best:  109105567.61889131
+iteration:  2 best:  107713314.70102748
+iteration:  6 best:  105454826.61610109
+iteration:  12 best:  105154256.7881907
+iteration:  13 best:  105088937.935515
+iteration:  33 best:  103597119.97128706
+iteration:  48 best:  103354859.3491972
+Total iterations:  300
+Best Solution:  103354859.3491972
+Process took 261 seconds
+
+-------------------------3-------------------------------
+Best initial sol:  109645941.76251937
+iteration:  0 best:  107465852.62366033
+iteration:  1 best:  103059402.55697912
+iteration:  231 best:  102116139.6614034
+Total iterations:  300
+Best Solution:  102116139.6614034
+Process took 287 seconds
+
+Best initial sol:  109374210.72772996
+iteration:  0 best:  107606734.78636986
+iteration:  6 best:  107259301.944597
+iteration:  10 best:  106744385.06658961
+iteration:  29 best:  105681525.0474547
+iteration:  35 best:  104272073.0806292
+iteration:  131 best:  102705489.60441114
+Total iterations:  300
+Best Solution:  102705489.60441114
+Process took 284 seconds
+
+Best initial sol:  107321324.5106597
+iteration:  0 best:  107029010.68302494
+iteration:  7 best:  103266110.44544007
+Total iterations:  300
+Best Solution:  103266110.44544007
+Process took 284 seconds
+
+-------------------------4-------------------------------
+Best initial sol:  107369432.31220846
+iteration:  0 best:  107181730.20597453
+iteration:  0 best:  106219897.47825684
+iteration:  2 best:  105344938.91607827
+iteration:  14 best:  103791317.31696193
+iteration:  60 best:  102899719.6777295
+iteration:  146 best:  102674775.99963422
+iteration:  162 best:  102044994.45422797
+iteration:  269 best:  101882376.0655704
+Total iterations:  300
+Best Solution:  101882376.0655704
+Process took 289 seconds
+
+Best initial sol:  108572760.89189084
+iteration:  1 best:  105978578.40595552
+iteration:  10 best:  105595783.09436168
+iteration:  16 best:  104477976.18873583
+iteration:  99 best:  104471513.14385249
+iteration:  102 best:  103065643.70034727
+iteration:  155 best:  102950572.04182859
+iteration:  193 best:  102876189.72020693
+iteration:  208 best:  102575810.592045
+Total iterations:  300
+Best Solution:  102575810.592045
+Process took 289 seconds
+
+Best initial sol:  107893695.2471222
+iteration:  0 best:  107837862.79300933
+iteration:  0 best:  107662336.40187334
+iteration:  0 best:  107658568.30944741
+iteration:  5 best:  106358905.84995556
+iteration:  11 best:  105147739.9157784
+iteration:  65 best:  104553048.20639122
+iteration:  66 best:  104347246.76919489
+iteration:  111 best:  98588837.85945787
+Total iterations:  300
+Best Solution:  98588837.85945787
+Process took 289 seconds
+
+-------------------------5-------------------------------
+Best initial sol:  107177890.54568602
+iteration:  1 best:  106666416.0368166
+iteration:  2 best:  106425560.49180508
+iteration:  8 best:  104341538.47304066
+iteration:  165 best:  104043228.87812926
+Total iterations:  300
+Best Solution:  104043228.87812926
+Process took 297 seconds
+
+Best initial sol:  107988864.25436872
+iteration:  5 best:  106896205.2036946
+iteration:  27 best:  105078040.49920204
+iteration:  33 best:  101886139.86855868
+Total iterations:  300
+Best Solution:  101886139.86855868
+Process took 295 seconds
+
+Best initial sol:  110160676.25370666
+iteration:  1 best:  109294202.28507876
+iteration:  1 best:  106647614.5048134
+iteration:  9 best:  106203439.67537363
+iteration:  30 best:  103758964.2557086
+iteration:  35 best:  103729490.96465066
+iteration:  161 best:  100044436.35694627
+iteration:  167 best:  98996727.89629528
+Total iterations:  300
+Best Solution:  98996727.89629528
+Process took 296 seconds
+
+-------------------------6-------------------------------
+Best initial sol:  109437945.21613841
+Total iterations:  300
+Best Solution:  109437945.21613841
+Process took 336 seconds
+
+Best initial sol:  109574146.10193254
+Total iterations:  300
+Best Solution:  109574146.10193254
+Process took 345 seconds
+
+Best initial sol:  108863427.79735899
+Total iterations:  300
+Best Solution:  108863427.79735899
+Process took 327 seconds
