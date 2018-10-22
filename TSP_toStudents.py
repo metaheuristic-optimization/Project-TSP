@@ -1,5 +1,3 @@
-
-
 """
 Author: David Ahern - R00002267
 """
@@ -9,8 +7,6 @@ from Individual import *
 import sys
 import time
 import math
-import itertools
-import functools
 
 class BasicTSP:
     def __init__(self, _fName, _popSize, _mutationRate, _maxIterations, _selectedCandidateSelectionMethod, _selectedCrossoverMethod, _selectedMutationMethod):
@@ -354,13 +350,13 @@ if len(sys.argv) < 2:
 
 problem_file = sys.argv[1]
 
-selectedCandidateSelectionMethod = input("Please select candidate selection method \n1) Random selection \n2) Roulette Wheel \n3) Rank based\n")
+selectedCandidateSelectionMethod = input("Please select candidate selection method \n1) Random selection \n2) Roulette Wheel \n3) Best and second best\n")
 selectedCrossoverMethod = input("Please select crossover method \n1) Uniform crossover\n2) Cycle crossover \n3) 1 order crossover \n")
 selectedMutationMethod = input("Please select mutation method \n1) Scramble mutation \n2) Reciprocal exchange mutation \n")
 
-ga = BasicTSP(sys.argv[1], 300, 0.1, 300, selectedCandidateSelectionMethod, selectedCrossoverMethod, selectedMutationMethod)
-
 start_time = time.time()
+
+ga = BasicTSP(sys.argv[1], 100, 0.1, 300, selectedCandidateSelectionMethod, selectedCrossoverMethod, selectedMutationMethod)
 
 ga.search()
 

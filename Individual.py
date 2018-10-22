@@ -9,7 +9,6 @@ file: Individual.py
 import random
 import math
 
-
 class Individual:
     def __init__(self, _size, _data):
         """
