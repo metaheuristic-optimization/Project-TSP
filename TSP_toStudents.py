@@ -27,7 +27,7 @@ class BasicTSP:
         # User input variables
         self.candidateSelectionMethods = [self.randomSelection, self.rouletteWheel, self.bestAndSecondBest]
         self.selectedCandidateSelectionMethod = int(_selectedCandidateSelectionMethod)
-        self.crossoverSelectionMethods = [self.uniformCrossover, self.cycleCrossover, self.crossover]
+        self.crossoverSelectionMethods = [self.uniformCrossover, self.cycleCrossover]
         self.selectedCrossoverMethod = int(_selectedCrossoverMethod)
         self.mutationMethods = [self.scrambleMutation, self.reciprocalExchangeMutation]
         self.selectedMutationMethod = int(_selectedMutationMethod)
@@ -351,7 +351,7 @@ if len(sys.argv) < 2:
 problem_file = sys.argv[1]
 
 selectedCandidateSelectionMethod = input("Please select candidate selection method \n1) Random selection \n2) Roulette Wheel \n3) Best and second best\n")
-selectedCrossoverMethod = input("Please select crossover method \n1) Uniform crossover\n2) Cycle crossover \n3) 1 order crossover \n")
+selectedCrossoverMethod = input("Please select crossover method \n1) Uniform crossover\n2) Cycle crossover \n")
 selectedMutationMethod = input("Please select mutation method \n1) Scramble mutation \n2) Reciprocal exchange mutation \n")
 
 start_time = time.time()
