@@ -397,6 +397,10 @@ if len(sys.argv) < 2:
 
 problem_file = sys.argv[1]
 
+
+"""
+Presnt user with menu
+"""
 selectedCandidateSelectionMethod = input("Please select candidate selection method \n1) Random selection \n2) Roulette Wheel \n3) Best and second best\n")
 selectedCrossoverMethod = input("Please select crossover method \n1) Uniform crossover\n2) Cycle crossover \n")
 selectedMutationMethod = input("Please select mutation method \n1) Scramble mutation \n2) Reciprocal exchange mutation \n")
