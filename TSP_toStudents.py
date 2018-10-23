@@ -211,13 +211,27 @@ class BasicTSP:
         """
         Reciprocal Exchange Mutation implementation
         """
+
+        """
+        Check if mutation will take place based on the mutation rate
+        """
         if not self.doMutation():
             return
 
+        """
+        Select 2 random indexes in the gene
+        """
         indexA = random.randint(0, self.genSize-1)
         indexB = random.randint(0, self.genSize-1)
 
+        """
+        Store the first gene in a temporary variable for later insertion
+        """
         tmp = ind.genes[indexA]
+
+        """
+        Swap the two selected genes around
+        """
         ind.genes[indexA] = ind.genes[indexB]
         ind.genes[indexB] = tmp
 
@@ -227,6 +241,10 @@ class BasicTSP:
     def scrambleMutation(self, ind):
         """
         Scramble Mutation implementation
+        """
+
+        """
+        Check if mutation will take place based on the mutation rate
         """
         if not self.doMutation():
             return
