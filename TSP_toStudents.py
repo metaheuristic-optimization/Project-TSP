@@ -148,12 +148,20 @@ class BasicTSP:
         """
         child = []
 
+        """
+        Loop through the chromosome and populate a child. If the 50/50 random choice is True then we populate the current
+        index of the child with the value from the first parent. If the random choice is False then we populate the current
+        index of the child with a None value. Note as we are only generating one child we should not care about parent 2
+        """
         for i in range(0, self.genSize):
             if random.choice([True, False]):
                 child.append(indA.genes[i])
             else:
                 child.append(None)
 
+        """
+        Loop through the 
+        """
         for i in range(0, self.genSize):
             if not indB.genes[i] in child:
                 nextFreeSlot = next(i for i,v in enumerate(child) if v == None)
@@ -171,15 +179,19 @@ class BasicTSP:
         cycles = []
         dictMap = {}
 
-        # Build dictionary for fast lookup of indexes
+        """
+        Build dictionary for fast lookup of indexes.
+        """
         for i in range(0, self.genSize):
             dictMap[indA.genes[i]] = {'parent1': indA.genes[i], 'parent2': indB.genes[i], 'index': i}
 
-        # Compute all the cycles
+        """
+        Pre compute all the possible cycles. This makes generating the children much simpler
+        """
         for i in range(0, self.genSize):
             tmpCycle = []
 
-            # Make sure value is not already in another cycle
+            # Make sure value is not already in another cycle to avoid duplication
             if not flags[i]:
                 cycleStart = indA.genes[i]
                 tempPair = dictMap[indA.genes[i]]
@@ -193,7 +205,9 @@ class BasicTSP:
 
                 cycles.append(tmpCycle)
 
-        # Alternate cycles to generate the children
+        """
+        Alternate cycles to generate the children
+        """
         counter = 0
         for cycle in cycles:
             for pair in cycle:
