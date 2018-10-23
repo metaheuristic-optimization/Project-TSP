@@ -231,12 +231,27 @@ class BasicTSP:
         if not self.doMutation():
             return
 
+        """
+        Select 2 random indexes. We need to make sure the first index is at least 1 less than the size of the array
+        to allow the second index room. The second index needs to be after the first index so we can choose everything
+        in between
+        """
         indexStart = random.randint(0, self.genSize-2)
         indexEnd = random.randint(indexStart + 1, self.genSize-1)
 
+        """
+        Take a slice of the array between the two index and store it into a temporary variable
+        """
         tmp = ind.genes[indexStart:indexEnd]
 
+        """
+        Shuffle the temporary array of values randomly
+        """
         random.shuffle(tmp)
+
+        """
+        Re-insert the shuffled array back into the original genes array
+        """
         ind.genes[indexStart:indexEnd] = tmp
 
         ind.computeFitness()
